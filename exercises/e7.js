@@ -5,6 +5,17 @@
 
 export function getClientWithLeastBalance(array) {
   // Your code goes here...
+  let minBalArr = []
+  let minBal = array[0].balance
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].balance < minBal && array[i].balance > 0) {
+      minBal = array[i].balance
+      minBalArr.push(array[i])
+    }
+  }
+
+  return minBalArr
 
 }
 

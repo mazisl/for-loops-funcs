@@ -7,7 +7,63 @@
 
 export function separateNamesWithAFromRest(array) {
   // Your code goes here...
+  let stringArr
+  let namesArrSp = []
+  for (let elm of array) {
+    stringArr = elm.split('')
+    namesArrSp.push(stringArr)
+  }
 
+  // let namesWithA = []
+  // for (let i = 0; i < namesArrSp.length; i++) {
+  //   for (let j = 0; j < namesArrSp[i].length; j++) {
+  //     if (namesArrSp[i][j] == 'a') {
+  //       namesWithA.push(namesArrSp[i].join(''))
+  //     }
+  //   }
+  // }
+
+  let namesWithA = []
+  for (let i = 0; i < namesArrSp.length; i++) {
+    for (let j = 0; j < namesArrSp[i].length; j++) {
+      if (namesArrSp[i][j] == 'a') {
+        namesWithA.push(namesArrSp[i])
+      }
+    }
+  }
+  // console.log(namesWithA)
+
+  //join method replacement start
+  let namesWithLtrA = []
+  for (let i = 0; i < namesWithA.length; i++) {
+    let nameWithLetter = '';
+    for (let j = 0; j < namesWithA[i].length; j++) {
+      nameWithLetter += `${namesWithA[i][j]}`      
+    }
+    namesWithLtrA.push(nameWithLetter)
+  }
+  //join method replacement end
+
+  //make sure a name isn't repeated in the array
+  let namesWithAFinal = [];
+  for(let i of namesWithLtrA) {
+    if(namesWithAFinal.indexOf(i) === -1) {
+      namesWithAFinal.push(i);
+    }
+  }
+
+  //create array of names without A
+  let namesWithoutA = []
+  for(let i of array) {
+    if (namesWithAFinal.indexOf(i) === -1) {
+      namesWithoutA.push(i);
+    }
+  }
+
+  let newArr = []
+  newArr.push(namesWithAFinal, namesWithoutA)
+
+  return newArr
 }
 
 
